@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
 	before_action :find_note, only: [:show, :edit, :update, :destroy]
 	def index
-@notes=Note.where(user_id: current_user)
+	@notes=Note.where(user_id: current_user)
 	end
 	def show
 	end
@@ -27,8 +27,9 @@ class NotesController < ApplicationController
 		end
 	end
 	def destroy
-		@note.destroy
-		redirect_to note_path
+		 @note = Note.find(params[:note_id])
+  		 @note.destroy
+		redirect_to notes_path
 	end
 	private
 
